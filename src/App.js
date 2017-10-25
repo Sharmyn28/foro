@@ -1,21 +1,36 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+//import {playAction, nextAction, stopAction} from './actions'
+import {connect} from 'redux-zero/react'
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+const App = ({comments}) => {
+  const commentsList = comments.map((guest, index)=>{
+    return(
+    <li key={index}>{guest.name}
+      <br/>{guest.comment}
+    </li>)
+  });
+  return (
+    <div className="wrapper">
+      <header>
+        <p> New Comment </p>
+        <form >
+          <input type="text" placeholder="User"/>      
+          <input type="text" placeholder="Comment"/>
+          <button type="submit">Post Comment</button>
+        </form>         
+      </header>
+      <div className="main">	
+        <h2>Comments</h2>
+        <p>model.guests.length</p>
+        <ul>
+          {commentsList}
+        </ul>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
-export default App;
+
+const mapToProps = ({comments}) => ({comments})
+export default connect(mapToProps) (App);
