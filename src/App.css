@@ -16,11 +16,12 @@ form button {
   color:#fff;  
 }
 h1 {
-  font-family: 'Courgette', cursive;
+  font-family: 'Courgette';
   text-shadow: 0 1px 0 rgba(0,0,0, .4);
-  line-height: .65;
-  margin-top: .5em;
-  margin-bottom: 0;
+  line-height: .25;
+  margin-top: 0;
+  margin-bottom: 1.5em;
+  font-size: 3.5em;
 }
 h2 {
   margin-top: 0;
@@ -30,6 +31,20 @@ p {
   text-shadow: 0 1px 0 rgba(0,0,0, .25);
   color:#58b7cd
 }
+
+.avatar{
+  width: 20%;
+}
+
+.name{
+  display: inline-block;
+  padding-left: 10%;
+}
+
+.remove{
+  float: right;
+}
+
 form {
   width: 60%;
   background: white;
@@ -44,7 +59,7 @@ form {
 form button {
   padding: 0 1em;
   font-size: 1em;
-  background: #f5f516;
+  background: #58b7cd;
   border-radius: .2em;
 }
 ul {
@@ -70,6 +85,10 @@ button {
 }
 header {
   text-align: center;  
+  background: linear-gradient(90deg, #d4eece, #55b3d0, #1e7eb7),
+  url('./images/header-bg.jpg') no-repeat;
+  background-blend-mode: multiply;    
+  background-size: cover;   
 }
 header input {
   padding: 12px;

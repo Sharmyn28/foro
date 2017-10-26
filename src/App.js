@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import './App.css';
 import {addComment, removeComment} from './actions'
+import avatar from './avatar.svg';
 import {connect} from 'redux-zero/react'
 
 const Post = ({name, comment, removeComment}) =>{
   return(
-    <li>{name}
-      <br/>{comment} <br/>
-      <button onClick={removeComment}>remove</button>
+    <li>
+      <img alt='avatar' src={avatar} className='avatar'/>
+      <h3 className='name'><strong>{name}</strong></h3>
+      <span>{comment}</span> 
+      <button onClick={removeComment} className='remove'>remove</button>
     </li>
   )
 }
@@ -36,7 +39,7 @@ const App = ({comments}) => {
   return (
     <div className="wrapper">
       <header>
-        <p> New Comment </p>
+        <h1 style={{fontSize: '3.5em'}}> New Comment </h1>
         <form onSubmit={onSubmit}>
           <input type="text" placeholder="User" ref={(e) => this.nameInputRef = e}/>      
           <input type="text" placeholder="Comment" ref={(e) => this.commentInputRef = e}/>
