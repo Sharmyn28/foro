@@ -3,35 +3,41 @@ import './App.css';
 import {addComment} from './actions'
 import {connect} from 'redux-zero/react'
 
-/*const Post = ({comments}) =>{
+const Post = ({name, comment}) =>{
   return(
-    <div key={index}>{guest.name}
-      <br/>{guest.comment}
-    </div>
+    <li>{name}
+      <br/>{comment}
+    </li>
   )
-}*/
+}
 
 const App = ({comments}) => {
   const onSubmit = (e) => {
 		e.preventDefault();
 		console.log ( 'this..', this);//con truco, es el connect el this.
-		addComment(this.playerInputRef.value)
+    addComment(this.nameInputRef.value, this.commentInputRef.value)
+    console.log(this.nameInputRef.value, this.commentInputRef.value)
+    this.nameInputRef.value = '';
+    this.commentInputRef.value = '';
   }
   
-  const commentsList = comments.map((guest, index)=>{
+  const commentsList = comments.map((guest, index) =>{
     return(
-    <li key={index}>{guest.name}
-      <br/>{guest.comment}
-    </li>)
-  });
+      <Post 
+        key={index}
+        name={guest.name}
+        comment={guest.comment}
+      />
+    )
+  })
 
   return (
     <div className="wrapper">
       <header>
         <p> New Comment </p>
         <form onSubmit={onSubmit}>
-          <input type="text" placeholder="User" />      
-          <input type="text" placeholder="Comment" ref={(e) => this.playerInputRef = e}/>
+          <input type="text" placeholder="User" ref={(e) => this.nameInputRef = e}/>      
+          <input type="text" placeholder="Comment" ref={(e) => this.commentInputRef = e}/>
           <button type="submit">Post Comment</button>
         </form>         
       </header>
