@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
-import {addComment} from './actions'
+import {addComment, removeComment} from './actions'
 import {connect} from 'redux-zero/react'
 
-const Post = ({name, comment}) =>{
+const Post = ({name, comment, removeComment}) =>{
   return(
     <li>{name}
-      <br/>{comment}
+      <br/>{comment} <br/>
+      <button onClick={removeComment}>remove</button>
     </li>
   )
 }
@@ -14,7 +15,7 @@ const Post = ({name, comment}) =>{
 const App = ({comments}) => {
   const onSubmit = (e) => {
 		e.preventDefault();
-		console.log ( 'this..', this);//con truco, es el connect el this.
+		//console.log ( 'this..', this);//con truco, es el connect el this.
     addComment(this.nameInputRef.value, this.commentInputRef.value)
     console.log(this.nameInputRef.value, this.commentInputRef.value)
     this.nameInputRef.value = '';
@@ -27,6 +28,7 @@ const App = ({comments}) => {
         key={index}
         name={guest.name}
         comment={guest.comment}
+        removeComment={()=> removeComment(index)}
       />
     )
   })

@@ -3,18 +3,13 @@ import createStore from 'redux-zero'
 const COMMENTS = [
     {
        id: 1, 
-       name: 'Song 1',
-       comment : 'Artist 1',
+       name: 'Lala',
+       comment : 'Buen foro',
     },
     {
         id: 2,
-        name: 'Song 2',
-        comment : 'Artist 2',
-    },
-    {
-        id: 3,
-        name: 'Song 3',
-        comment : 'Artist 3',
+        name: 'Paco',
+        comment : 'Gran idea!',
     },
  ]
  

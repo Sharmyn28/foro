@@ -12,3 +12,10 @@ export const addComment = (name, comment) => {
     })
 }
 
+export const removeComment = (index) =>{
+    const addCommentList = store.getState().comments.filter((item, idx) => idx !== index);
+
+    store.setState({
+        comments: addCommentList
+    })
+}
